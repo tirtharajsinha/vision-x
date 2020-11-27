@@ -1,5 +1,5 @@
 <h1 style="color:cyan;,background-color:black;"><u> Vision - X <u></h1>
-## vision - X is a computer Vision project deployable on web ,totally based on <b>django-python</b> framework.<br>
+vision - X is a computer Vision project deployable on web ,totally based on <b>django-python</b> framework.<br>
 with high security login-logout system.<br>
 Comes with vary user friendly UI design.<br>
 Webpage front design is built by <b>html5 ,css3, javascript</b>.<br>
