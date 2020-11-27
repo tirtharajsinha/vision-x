@@ -4,5 +4,5 @@ with high security login-logout system.<br>
 Comes with vary user friendly UI design.<br>
 Webpage front design is built by <b>html5 ,css3, javascript</b>.<br>
 Total backend developent was built using <b>python3</b>.<br>
-developed by Tirtharaj Sinha<a href="">@tirtharajsinha</a>.<br>
-you can find project <a href="#">Here</a>.<br>
+developed by Tirtharaj Sinha<a href="https://github.com/tirtharajsinha"> @tirtharajsinha</a>.<br>
+you can find project <a href="https://github.com/users/tirtharajsinha/projects/2">Here</a>.<br>
