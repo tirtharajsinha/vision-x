@@ -1,0 +1,45 @@
+img {
+    width: 90%;
+    margin: auto;
+}
+
+table {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+tr {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(21, 158, 221);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.rows {
+    background-color: rgb(53, 106, 221);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+.rows a {
+    color: red;
+    text-decoration: none;
+}
+
+.headings {
+    color: rgb(24, 95, 228);
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 0px;
+}

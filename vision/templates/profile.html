@@ -1,0 +1,53 @@
+{% extends "base.html"%} {% block title %}Profile{% endblock %}{% block css %}static/profile.css{% endblock css %}{% block content %}
+<h1 class="headings">Profile</h1>
+
+<form class="form" method="POST" action="/profile" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="Username">Username [not editable]*</label>
+        <p class="form-control" id="Username">{{user.get_username}}</p>
+    </div>
+    <div class="form-group">
+        <label for="email">Email address [Editable for first entry]</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email address" value="{{user.email}}" required />
+    </div>
+    <div class="form-group">
+        <label for="email">Last login [not editable]*</label>
+        <p id="email" class="form-control">{{user.last_login}}</p>
+    </div>
+    <div class="form-group">
+        <label for="email">Date Joined [not editable]*</label>
+        <p id="email" class="form-control">{{user.date_joined}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstname">FirstName</label>
+        <input type="text" class="form-control .bg-transparent" id="firstname" name="firstname" value="{{user.first_name}}" placeholder="Enter firstname" />
+    </div>
+    <div class="form-group">
+        <label for="Lastname">lastName</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter LastName" value="{{user.last_name}}" />
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+
+<div class="footer">
+    <div class="social">
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-youtube"></a>
+    </div>
+    <h3>
+        Vision is a Computer Vision project built by Tirtharaj Sinha<br /> with <i class="fa fa-heart" style="color: red"></i> and effort.
+    </h3>
+    <div class="foot"></div>
+</div>
+
+<script>
+    document.getElementsByClassName("profile")[0].classList.add("active");
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+{% endblock %}

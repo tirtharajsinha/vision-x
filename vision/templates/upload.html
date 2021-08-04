@@ -1,0 +1,86 @@
+{% extends "base.html"%} {% block title %}Home{% endblock %}{% block css %}static/upload.css{% endblock css %}{% block content %} {% if messages %} {% for message in messages %}
+<div class="alert {{ message.tags }} alert-primary alert-dismissible fade show my-0 bg-cyan" role="alert">
+    <strong>{{request.user.username}}</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %} {% endif %}
+
+<h1 class="headings">Vision</h1>
+<form action="/upload" method="POST" class="form-signin" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1 class="h3 mb-3 font-weight-normal">upload data</h1>
+
+    <label for="image" class="sr-only">image</label>
+    <input type="file" id="image" name="image" class="form-control" required title=" " onchange="dispimg(this)" /><br /><br />
+    <img id="blah" src="media/finalimages/2.jpg" alt="your image" width="200" height="auto" />
+    <label for="option" class="sr-only">description</label>
+    <select name="option" id="option">
+    <option value="NO_FILTER">NO_FILTER</option>
+    <option value="COLORIZED">COLORIZED</option>
+    <option value="GRAYSCALE">GRAYSCALE</option>
+    <option value="BLURRED">BLURRED</option>
+    <option value="BINARY">BINARY</option>
+    <option value="INVERT">INVERT</option>
+    <option value="FACE_DETECTION">FACE_DETECTION</option>
+    <option value="CLASSIFICATION">CLASSIFICATION</option>
+    <option value="SKETCHED">sketched</option>
+    <option value="SHAPE">shape ditection</option>
+  </select>
+    <br /><br />
+
+    <!--<label for="Password" class="sr-only">Password</label>
+      <input type="password" id="Password" name="passward" class="form-control" placeholder="Password" required> -->
+    <div class="checkbox mb-3">
+        <label> </label>
+    </div>
+    <button class="btn btn-lg btn-success btn-block" type="submit" value="upload">
+    upload
+  </button>
+</form>
+
+{% if p %}
+<div class="result">
+    <div class="rimg">
+        <img src="{{p.orgimage.url}}" alt="orgpicture" width="300px" />
+        <p>original image</p>
+    </div>
+    <div class="rimg">
+        <img src="{{p.image.url}}" alt="finalpicture" width="300px" />
+        <p>processed image</p>
+    </div>
+</div>
+{% endif %}
+
+<div class="footer">
+    <div class="social">
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-youtube"></a>
+    </div>
+    <h3>
+        Vision is a Computer Vision project built by Tirtharaj Sinha<br /> with <i class="fa fa-heart" style="color: red"></i> and effort.
+    </h3>
+    <div class="foot"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script>
+    document.getElementsByClassName("home")[0].classList.add("active");
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+    function dispimg(ele) {
+        document.getElementById("blah").style.display = "block";
+        document.getElementById("blah").src = window.URL.createObjectURL(
+            ele.files[0]
+        );
+    }
+</script>
+
+{% endblock %}

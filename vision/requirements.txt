@@ -1,0 +1,4 @@
+django
+numpy==1.19.3
+pillow
+opencv-python
