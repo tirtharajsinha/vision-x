@@ -16,7 +16,7 @@
     <input type="file" id="image" name="image" class="form-control" required title=" " onchange="dispimg(this)" /><br /><br />
     <img id="blah" src="media/finalimages/2.jpg" alt="your image" width="200" height="auto" />
     <label for="option" class="sr-only">description</label>
-    <select name="option" id="option">
+    <!-- <select name="option" id="option">
     <option value="NO_FILTER">NO_FILTER</option>
     <option value="COLORIZED">COLORIZED</option>
     <option value="GRAYSCALE">GRAYSCALE</option>
@@ -27,7 +27,116 @@
     <option value="CLASSIFICATION">CLASSIFICATION</option>
     <option value="SKETCHED">sketched</option>
     <option value="SHAPE">shape ditection</option>
-  </select>
+  </select> -->
+
+    <div class="selector">
+        <label for="NO_FILTER">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/nofilter.jpg')"
+      >
+        <input
+          type="radio"
+          name="option"
+          value="NO_FILTER"
+          id="NO_FILTER"
+          checked
+        />
+        <p>NO_FILTER</p>
+      </div>
+    </label>
+        <label for="COLORIZED">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/color.jpg')"
+      >
+        <input type="radio" name="option" value="COLORIZED" id="COLORIZED" />
+        <p>COLORIZED</p>
+      </div>
+    </label>
+        <label for="GRAYSCALE">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/gray.jpg')"
+      >
+        <input type="radio" name="option" value="GRAYSCALE" id="GRAYSCALE" />
+        <p>GRAYSCALE</p>
+      </div>
+    </label>
+        <label for="BLURRED">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/blur.jpg')"
+      >
+        <input type="radio" name="option" value="BLURRED" id="BLURRED" />
+        <p>BLURRED</p>
+      </div>
+    </label>
+        <label for="BINARY">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/binary.jpg')"
+      >
+        <input type="radio" name="option" value="BINARY" id="BINARY" />
+        <p>BINARY</p>
+      </div>
+    </label>
+        <label for="INVERT">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/invert.jpg')"
+      >
+        <input type="radio" name="option" value="INVERT" id="INVERT" />
+        <p>INVERT</p>
+      </div>
+    </label>
+        <label for="FACE_DETECTION">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/face.jpg')"
+      >
+        <input
+          type="radio"
+          name="option"
+          value="FACE_DETECTION"
+          id="FACE_DETECTION"
+        />
+        <p>FACE_DETECTION</p>
+      </div>
+    </label>
+        <label for="CLASSIFICATION">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/classsific.jpg')"
+      >
+        <input
+          type="radio"
+          name="option"
+          value="CLASSIFICATION"
+          id="CLASSIFICATION"
+        />
+        <p>CLASSIFICATION</p>
+      </div>
+    </label>
+        <label for="SKETCHED">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/skached.jpg')"
+      >
+        <input type="radio" name="option" value="SKETCHED" id="SKETCHED" />
+        <p>SKETCHED</p>
+      </div>
+    </label>
+        <label for="SHAPE">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/shape.jpg')"
+      >
+        <input type="radio" name="option" value="SHAPE" id="SHAPE" />
+        <p>SHAPE DITECTION</p>
+      </div>
+    </label>
+    </div>
     <br /><br />
 
     <!--<label for="Password" class="sr-only">Password</label>
