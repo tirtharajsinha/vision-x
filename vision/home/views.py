@@ -32,7 +32,7 @@ def upload(request):
         p = users[len(users)-1]
         return render(request, "upload.html", {"p": p})
     messages.add_message(request, messages.INFO,
-                         "welcome !!, you are logged in.")
+                         "welcome back, " + str(request.user) + ". you are now logged in.")
     return render(request, "upload.html")
 
 

@@ -1,6 +1,6 @@
 {% extends "base.html"%} {% block title %}Home{% endblock %}{% block css %}static/upload.css{% endblock css %}{% block content %} {% if messages %} {% for message in messages %}
 <div class="alert {{ message.tags }} alert-primary alert-dismissible fade show my-0 bg-cyan" role="alert">
-    <strong>{{request.user.username}}</strong> {{ message }}
+    {{ message }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -10,7 +10,7 @@
 <h1 class="headings">Vision</h1>
 <form action="/upload" method="POST" class="form-signin" enctype="multipart/form-data">
     {% csrf_token %}
-    <h1 class="h3 mb-3 font-weight-normal">upload data</h1>
+    <h1 class="h3 mb-3 font-weight-normal">upload image</h1>
 
     <label for="image" class="sr-only">image</label>
     <input type="file" id="image" name="image" class="form-control" required title=" " onchange="dispimg(this)" /><br /><br />
