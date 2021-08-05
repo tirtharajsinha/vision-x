@@ -11,5 +11,6 @@ urlpatterns = [
     path('showimg', views.showimg, name="showimg"),
     path('delimage/<id>', views.delimage, name="delimage"),
     path('profile', views.profile, name="profile"),
+    path('deluser', views.deluser, name="deluser"),
 
 ]

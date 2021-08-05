@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authenticatiion</title>
+    <style>
+        body,
+        html {
+            background-color: rgb(37, 37, 37);
+        }
+        
+        form {
+            width: 290px;
+            display: block;
+            margin: auto;
+            background-color: rgb(29, 29, 29);
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 300px;
+            border: 1px solid red;
+        }
+        
+        input {
+            width: 250px;
+            display: block;
+            margin: auto;
+            margin-top: 10px;
+            background-color: rgb(53, 53, 53);
+            border-radius: 5px;
+            height: 20px;
+            color: white;
+        }
+        
+        input:focus {
+            outline: none;
+        }
+        
+        p {
+            color: green;
+            width: 250px;
+            text-align: center;
+            display: block;
+            margin: auto;
+            font-size: 18px;
+        }
+        
+        button {
+            width: 250px;
+            display: block;
+            margin: auto;
+            padding: 7px;
+            background-color: rgb(53, 53, 53);
+            color: red;
+            border-radius: 5px;
+            border: none;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: rgb(14, 10, 10);
+            color: rgb(209, 53, 118);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/deluser" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            Authentication required. <br /> Enter password for {{ user.get_username }}
+        </p>
+        <input type="password" name="password" required />
+        <button type="submit">Authenticate</button>
+    </form>
+</body>
+
+</html>

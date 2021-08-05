@@ -31,8 +31,7 @@ def upload(request):
         users = Upload.objects.all()
         p = users[len(users)-1]
         return render(request, "upload.html", {"p": p})
-    messages.add_message(request, messages.INFO,
-                         "welcome back, " + str(request.user) + ". you are now logged in.")
+    
     return render(request, "upload.html")
 
 
@@ -44,11 +43,13 @@ def loginuser(request):
         user = authenticate(username=username, password=passward)
         if user is not None:
             login(request, user)
+            messages.add_message(request, messages.INFO,
+                                 "welcome back, " + str(request.user) + ". you are now logged in.")
             return redirect("/upload")
         else:
             messages.add_message(request, messages.INFO,
                                  "Wrong authentication details !! Try again.")
-            return render(request, "upload.html")
+            return render(request, "login.html")
     return render(request, "login.html")
 
 
@@ -60,7 +61,24 @@ def logoutuser(request):
 
 
 def deluser(request):
-    pass
+    if request.user.is_anonymous:
+        return redirect("/")
+
+    if request.method == "POST":
+        username = str(request.user)
+        password = request.POST.get("password")
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            user.delete()
+            logout(request)
+            userdata = Upload.objects.all().filter(username=username)
+            userdata.delete()
+            return redirect("/")
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 "authentication failed !!")
+            return redirect("/")
+    return render(request, "auth.html")
 
 
 def register(request):
@@ -124,3 +142,7 @@ def profile(request):
         return redirect("/profile")
 
     return render(request, "profile.html")
+
+
+def auth(request):
+    pass
