@@ -11,6 +11,8 @@ from django.contrib import messages
 
 
 def index(request):
+    if request.user.is_anonymous:
+        return render(request, "index.html")
     return redirect("/upload")
 
 
@@ -31,7 +33,7 @@ def upload(request):
         users = Upload.objects.all()
         p = users[len(users)-1]
         return render(request, "upload.html", {"p": p})
-    
+
     return render(request, "upload.html")
 
 
