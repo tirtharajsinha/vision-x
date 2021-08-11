@@ -20,6 +20,7 @@ ACTION_CHOICES = (
 
 
 class Upload(models.Model):
+    id = models.BigAutoField(primary_key=True)
     username = models.CharField(max_length=255, default="")
     image = models.ImageField(upload_to="finalimages")
     orgimage = models.ImageField(upload_to="orgimages", default="")

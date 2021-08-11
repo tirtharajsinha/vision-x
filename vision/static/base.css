@@ -86,3 +86,8 @@ body {
         width: calc(100% - 70px);
     }
 }
+
+.version {
+    position: absolute;
+    bottom: 20px;
+}

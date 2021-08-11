@@ -146,5 +146,9 @@ def profile(request):
     return render(request, "profile.html")
 
 
+def about(request):
+    return render(request, "about.html")
+
+
 def auth(request):
     pass
