@@ -14,7 +14,7 @@
 
     <label for="image" class="sr-only">image</label>
     <input type="file" id="image" name="image" class="form-control" required title=" " onchange="dispimg(this)" /><br /><br />
-    <img id="blah" src="media/finalimages/2.jpg" alt="your image" width="200" height="auto" />
+    <img id="blah" src="" alt="your image" width="200" height="auto" />
     <label for="option" class="sr-only">description</label>
     <!-- <select name="option" id="option">
     <option value="NO_FILTER">NO_FILTER</option>
@@ -136,6 +136,16 @@
         <p>SHAPE DITECTION</p>
       </div>
     </label>
+        </label>
+        <label for="DOCUMENT">
+      <div
+        class="lab"
+        style="background-image: url('static/thumbnail/shape.jpg')"
+      >
+        <input type="radio" name="option" value="DOCUMENT" id="DOCUMENT" />
+        <p>DOCUMENT FLATTEN</p>
+      </div>
+    </label>
     </div>
     <br /><br />
 
@@ -179,7 +189,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script>
-    document.getElementsByClassName("home")[0].classList.add("active");
+    document.getElementsByClassName("service")[0].classList.add("active");
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }

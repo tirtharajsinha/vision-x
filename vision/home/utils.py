@@ -127,5 +127,86 @@ def get_filtered_image(image, action):
         filtered = imgcontour
         getcontours(imgcanny)
         filtered = imgcontour
-
+    elif action == "DOCUMENT":
+        filtered = get_flatten_document(image)
+    else:
+        filtered = np.zeros((512, 512, 3), np.uint8)
+        cv2.putText(filtered, "No Action", (100, 200),
+                    cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 100), 10)
     return filtered
+
+
+def preProcessing(img):
+    imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    imgBlur = cv2.GaussianBlur(imgGray, (5, 5), 1)
+    imgCanny = cv2.Canny(imgBlur, 100, 130)
+    kernel = np.ones((5, 5))
+    imgDial = cv2.dilate(imgCanny, kernel, iterations=2)
+    imgThres = cv2.erode(imgDial, kernel, iterations=1)
+    return imgThres
+
+
+def getContours(img):
+    biggest = np.array([])
+    maxArea = 0
+    contours, hierarchy = cv2.findContours(
+        img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    for cnt in contours:
+        area = cv2.contourArea(cnt)
+        if area > 5000:
+            # cv2.drawContours(imgContour, cnt, -1, (255, 0, 0), 3)
+            peri = cv2.arcLength(cnt, True)
+            approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
+            if area > maxArea and len(approx) == 4:
+                biggest = approx
+                maxArea = area
+    # cv2.drawContours(imgContour, biggest, -1, (0, 0, 255), 20)
+    return biggest
+
+
+def reorder(myPoints):
+    myPoints = myPoints.reshape((4, 2))
+    myPointsNew = np.zeros((4, 1, 2), np.int32)
+    add = myPoints.sum(1)
+    # print("add", add)
+    myPointsNew[0] = myPoints[np.argmin(add)]
+    myPointsNew[3] = myPoints[np.argmax(add)]
+    diff = np.diff(myPoints, axis=1)
+    myPointsNew[1] = myPoints[np.argmin(diff)]
+    myPointsNew[2] = myPoints[np.argmax(diff)]
+    # print("NewPoints",myPointsNew)
+    return myPointsNew
+
+
+def getWarp(img, biggest, widthImg, heightImg):
+
+    biggest = reorder(biggest)
+    pts1 = np.float32(biggest)
+    pts2 = np.float32(
+        [[0, 0], [widthImg, 0], [0, heightImg], [widthImg, heightImg]])
+    matrix = cv2.getPerspectiveTransform(pts1, pts2)
+    imgOutput = cv2.warpPerspective(img, matrix, (widthImg, heightImg))
+
+    imgCropped = imgOutput[10:imgOutput.shape[0] -
+                           10, 10:imgOutput.shape[1] - 10]
+    imgCropped = cv2.resize(imgCropped, (widthImg, heightImg))
+
+    return imgCropped
+
+
+def get_flatten_document(img):
+    widthImg = img.shape[0]
+    heightImg = img.shape[1]
+    img = cv2.resize(img, (widthImg, heightImg))
+    img = cv2.detailEnhance(img, 10, 0.25)
+    imgThres = preProcessing(img)
+    biggest = getContours(imgThres)
+    imgContour = img.copy()
+    cv2.drawContours(imgContour, biggest, -1, (0, 0, 255), 20)
+    if biggest.size != 0:
+        imgWraped = getWarp(img, biggest, widthImg, heightImg)
+
+    else:
+        imgWraped = img
+
+    return cv2.resize(imgWraped, (heightImg, widthImg))

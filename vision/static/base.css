@@ -49,11 +49,10 @@ body {
     margin-left: 10px;
     text-decoration: none;
     color: white;
+    width: 100%;
 }
 
-.sidebar ul a span {
-    margin-left: 10px;
-}
+.sidebar ul a span {}
 
 .sidebar ul .active {
     background: white;
@@ -85,9 +84,4 @@ body {
     .container-box {
         width: calc(100% - 70px);
     }
-}
-
-.version {
-    position: absolute;
-    bottom: 20px;
 }

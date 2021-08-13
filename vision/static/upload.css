@@ -125,6 +125,7 @@ select {
 .footer .social {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .social a {
@@ -244,5 +245,9 @@ select {
     .form-signin {
         width: 100%;
         padding: 0px;
+    }
+    .social a {
+        padding: 10px;
+        font-size: 25px;
     }
 }

@@ -18,15 +18,16 @@
 <body>
     <div class="sidebar">
         <ul>
-            <a href="/upload">
-                <li class="fa fa-home home"><span>Home</span></li>
+            <a href="/dashboard">
+                <li class="fa fa-home dashboard"><span>Dashboard</span></li>
+            </a>
+            <a href="/service">
+                <li class="fa fa-briefcase service"><span>Service</span></li>
             </a>
             <a href="/showimg">
                 <li class="fa fa-history history"><span>History</span></li>
             </a>
-            <a href="#">
-                <li class="fa fa-briefcase services"><span>Services</span></li>
-            </a>
+
             <a href="/about">
                 <li class="fa fa-info-circle about"><span>About</span></li>
             </a>
@@ -36,15 +37,16 @@
             <a href="/logout">
                 <li class="fa fa-sign-out logout"><span>LogOut</span></li>
             </a>
-            <a href="/deluser">
-                <li class="fa fa-close deluser" style="color:red; display: none;"><span>Delete Account</span></li>
-            </a>
-            <a href="">
+            <a href="https://tirtharajsinha.github.io">
                 <li class="fa fa-mobile-phone contact"><span>Contact</span</li>
             </a>
-            
+            <a href="/deluser">
+                <li class="fa fa-close deluser" style="color: red; display: none"><span>Delete Account</span>
+                </li>
+            </a>
+            <li></li>
+
         </ul>
-        
     </div>
     <div class="container-box">{% block content %}{% endblock %}</div>
 </body>

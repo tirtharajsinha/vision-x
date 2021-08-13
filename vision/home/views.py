@@ -13,7 +13,19 @@ from django.contrib import messages
 def index(request):
     if request.user.is_anonymous:
         return render(request, "index.html")
-    return redirect("/upload")
+    return redirect("/dashboard")
+
+
+def dashboard(request):
+    if request.user.is_anonymous:
+        return redirect("/login")
+    return render(request, "dashboard.html")
+
+
+def service(request):
+    if request.user.is_anonymous:
+        return redirect("/login")
+    return render(request, "service.html")
 
 
 def upload(request):
@@ -47,7 +59,7 @@ def loginuser(request):
             login(request, user)
             messages.add_message(request, messages.INFO,
                                  "welcome back, " + str(request.user) + ". you are now logged in.")
-            return redirect("/upload")
+            return redirect("/dashboard")
         else:
             messages.add_message(request, messages.INFO,
                                  "Wrong authentication details !! Try again.")

@@ -16,6 +16,7 @@ ACTION_CHOICES = (
     ('CLASSIFICATION', 'classification'),
     ('SKETCHED', 'sketched'),
     ('SHAPE', 'shape'),
+    ('DOCUMENT', 'document'),
 )
 
 

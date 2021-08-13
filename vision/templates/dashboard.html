@@ -1,0 +1,10 @@
+{% extends "base.html"%} {% block title %}Dashboard{% endblock %}{% block css %}static/dashboard.css{% endblock css %}{% block content %}
+<h1 class="headings">Dashboard</h1>
+
+<script>
+    document.getElementsByClassName("dashboard")[0].classList.add("active");
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+{% endblock %}

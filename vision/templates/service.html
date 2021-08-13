@@ -1,0 +1,26 @@
+{% extends "base.html"%} {% block title %}Service{% endblock %}{% block css %}static/service.css{% endblock css %}{% block content %}
+<h1 class="headings">Services</h1>
+
+<ul class="serlist">
+    <li>
+        <div class="title-img">
+            <img src="static/thumbnail/vision-thumb.jpg" alt="" />
+        </div>
+        <div class="details">
+            <p class="title">Vision</p>
+            <p class="des">
+                Vision is a online tool for Image Processing and simple image classification. Also comes with storage solution.
+            </p>
+        </div>
+        <div class="button">
+            <a href="/upload">Launch</a>
+        </div>
+    </li>
+</ul>
+<script>
+    document.getElementsByClassName("service")[0].classList.add("active");
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+{% endblock %}
