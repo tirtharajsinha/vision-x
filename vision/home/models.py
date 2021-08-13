@@ -4,6 +4,7 @@ from PIL import Image
 import numpy as np
 from io import BytesIO
 from django.core.files.base import ContentFile
+import cv2
 # Create your models here.
 ACTION_CHOICES = (
     ('NO_FILTER', 'NO_FILTER'),
@@ -42,7 +43,12 @@ class Upload(models.Model):
         # convert the image for processing
 
         cv_img = np.array(pil_img)
-        img = get_filtered_image(cv_img, self.action)
+        try:
+            img = get_filtered_image(cv_img, self.action)
+        except:
+            img = np.zeros((512, 512, 3), np.uint8)
+            cv2.putText(img, "No Action", (100, 200),
+                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 100), 10)
 
         # convert back to pil image
         im_pil = Image.fromarray(img)

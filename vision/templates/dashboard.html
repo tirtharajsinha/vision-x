@@ -1,10 +1,58 @@
 {% extends "base.html"%} {% block title %}Dashboard{% endblock %}{% block css %}static/dashboard.css{% endblock css %}{% block content %}
 <h1 class="headings">Dashboard</h1>
 
+<div class="services">
+    <ul class="current">
+        <h1 class="headings">Active Services</h1>
+        <a href="/upload">
+            <li>
+                <p>vision</p>
+                <p>Joined --.--</p>
+                <i class="fa fa-check-circle-o active"></i>
+            </li>
+        </a>
+        <a href="#">
+            <li>
+                <p>------</p>
+                <p>Joined --.--</p>
+                <i class="fa fa-remove"></i>
+            </li>
+        </a>
+    </ul>
+    <div class="usage">
+        <div class="box">
+            <p class="used">{{used}}</p>
+            <p class="total">10</p>
+            <p>used</p>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="social">
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-youtube"></a>
+    </div>
+    <h3>
+        Vision is a Computer Vision project built by Tirtharaj Sinha<br /> with <i class="fa fa-heart" style="color: red"></i> and effort.
+    </h3>
+    <div class="foot"></div>
+</div>
 <script>
     document.getElementsByClassName("dashboard")[0].classList.add("active");
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
+    }
+    let used = document.getElementsByClassName("used")[0];
+    let val = parseInt(used.innerHTML);
+    if (val > 7) {
+        document.getElementsByClassName("used")[0].style.color = "red";
+    } else if (val > 4) {
+        document.getElementsByClassName("used")[0].style.color = "rgb(24, 95, 228)";
+    } else {
+        document.getElementsByClassName("used")[0].style.color =
+            "rgb(124, 219, 16)";
     }
 </script>
 {% endblock %}

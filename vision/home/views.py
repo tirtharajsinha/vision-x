@@ -19,7 +19,10 @@ def index(request):
 def dashboard(request):
     if request.user.is_anonymous:
         return redirect("/login")
-    return render(request, "dashboard.html")
+    username = request.user.username
+    loaded = Upload.objects.all().filter(username=username)
+    used = len(list(loaded))
+    return render(request, "dashboard.html", {"used": used})
 
 
 def service(request):

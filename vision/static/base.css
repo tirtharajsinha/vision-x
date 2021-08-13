@@ -52,7 +52,9 @@ body {
     width: 100%;
 }
 
-.sidebar ul a span {}
+.sidebar ul a span {
+    padding-left: 10px;
+}
 
 .sidebar ul .active {
     background: white;

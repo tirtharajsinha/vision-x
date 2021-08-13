@@ -1,3 +1,9 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .headings {
     color: rgb(24, 95, 228);
     margin: auto;
@@ -5,4 +11,190 @@
     margin-bottom: 30px;
     text-align: center;
     padding: 0px;
+}
+
+.services {
+    width: calc(100%-40px);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 200px;
+}
+
+.services ul {
+    width: 60%;
+    min-width: 200px;
+    list-style: none;
+    padding-top: 40px;
+}
+
+.services ul .headings {
+    color: rgb(24, 95, 228);
+    margin: auto;
+    text-align: left;
+    padding: 0px;
+    font-size: 25px;
+}
+
+.services ul li {
+    width: 100%;
+    padding: 12px;
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.services ul a {
+    text-decoration: none;
+}
+
+.services ul li p:nth-child(1) {
+    color: rgb(56, 56, 56);
+    margin-bottom: 0px;
+    padding-left: 7px;
+    font-weight: 500;
+}
+
+.services ul li p:nth-child(2) {
+    color: rgb(119, 119, 119);
+    margin-bottom: 0px;
+    padding-left: 7px;
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+.services ul li i {
+    padding-right: 7px;
+    padding-top: 5px;
+    color: rgb(205, 50, 97);
+    font-size: 26px;
+}
+
+.services ul li .active {
+    padding-right: 7px;
+    padding-top: 5px;
+    color: yellowgreen;
+    font-size: 26px;
+}
+
+.services .usage {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    width: 38%;
+    margin-top: 70px;
+}
+
+.services .usage .box {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: auto;
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.services .usage .used {
+    font-size: 50px;
+    padding-bottom: 10px;
+    font-weight: 900;
+    border-bottom: 3px solid red;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.services .usage .total {
+    font-size: 30px;
+    color: rgb(59, 59, 59);
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.services .usage p:nth-child(3) {
+    text-align: center;
+    color: rgb(211, 32, 91);
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width: 900px) {
+    .services {
+        flex-direction: column;
+    }
+    .services ul {
+        width: 96%;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+    .services .usage {
+        width: 100%;
+        margin-top: 0px;
+    }
+    .services .usage .box {
+        width: 60%;
+        border-radius: 30px;
+    }
+}
+
+.footer {
+    width: 100%;
+    border-top-left-radius: 10px;
+    background-color: rgb(36, 37, 37);
+    color: white;
+    height: 300px;
+    margin-top: 100px;
+    padding-top: 20px;
+    position: relative;
+}
+
+.footer .social {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social a {
+    text-decoration: none;
+    padding: 20px;
+    font-size: 35px;
+    font-weight: 500;
+    display: block;
+    border-radius: 50%;
+    /* background-color: rgb(43, 44, 44); */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer h3 {
+    margin-top: 40px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.footer .foot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(33, 104, 236);
+    height: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .social a {
+        padding: 10px;
+        font-size: 25px;
+    }
+    .services ul li p:nth-child(2) {
+        display: none;
+    }
 }
