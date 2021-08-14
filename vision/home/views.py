@@ -22,6 +22,14 @@ def dashboard(request):
     username = request.user.username
     loaded = Upload.objects.all().filter(username=username)
     used = len(list(loaded))
+    if used > 10:
+        imageids = loaded.values_list("id", flat=True)
+        print(imageids)
+        for i in imageids:
+            image = Upload.objects.get(id=i)
+            image.delete()
+    loaded = Upload.objects.all().filter(username=username)
+    used = len(list(loaded))
     return render(request, "dashboard.html", {"used": used})
 
 
@@ -47,6 +55,11 @@ def upload(request):
         # print(img_obj)
         users = Upload.objects.all()
         p = users[len(users)-1]
+        loaded = Upload.objects.all().filter(username=username)
+        used = len(list(loaded))
+        if(used >= 10):
+            messages.add_message(request, messages.INFO,
+                                 "You are out of freespace. last upload not saved. for more info visit dashboard.")
         return render(request, "upload.html", {"p": p})
 
     return render(request, "upload.html")
