@@ -1,45 +1,66 @@
-img {
-    width: 90%;
-    margin: auto;
-}
-
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 table {
-    width: 90%;
-    margin: auto;
-    margin-bottom: 100px;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 100px;
 }
 
 tr {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: rgb(21, 158, 221);
-    border-radius: 20px;
-    padding: 20px;
-    color: white;
-    text-align: center;
-    vertical-align: middle;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(21, 158, 221);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
+tr img {
+  width: 90%;
+  margin: auto;
 }
 
 .rows {
-    background-color: rgb(53, 106, 221);
-    border-radius: 20px;
-    padding: 20px;
-    color: white;
-    margin-top: 10px;
-    font-size: 20px;
-    color: white;
+  background-color: rgb(53, 106, 221);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
 }
 
 .rows a {
-    color: red;
-    text-decoration: none;
+  color: red;
+  text-decoration: none;
 }
 
 .headings {
-    color: rgb(24, 95, 228);
-    margin: auto;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    text-align: center;
-    padding: 0px;
+  color: rgb(24, 95, 228);
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 0px;
+}
+
+.emptystate {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.emptystate img {
+  width: 300px;
+  height: auto;
+}
+
+.emptystate h2 {
+  color: rgba(53, 53, 53, 0.767);
+  letter-spacing: 1px;
+  font-family: sans-serif, "Poppins";
+  font-weight: 700;
+  text-align: center;
 }

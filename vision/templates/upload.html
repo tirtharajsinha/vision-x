@@ -1,7 +1,9 @@
-{% extends "base.html"%} {% block title %}Home{% endblock %}{% block css %}static/upload.css{% endblock css %}{% block content %} {% if messages %} {% for message in messages %}
+{% extends "base.html"%} {% block title %}Home{% endblock %}{% block css %}static/upload.css{% endblock css %}
+{% block content %}
+{% if messages %} {% for message in messages %}
 <div class="alert {{ message.tags }} alert-primary alert-dismissible fade show my-0 bg-cyan" role="alert">
-    {{ message }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -9,14 +11,25 @@
 
 <h1 class="headings">Vision</h1>
 <form action="/upload" method="POST" class="form-signin" enctype="multipart/form-data">
-    {% csrf_token %}
-    <h1 class="h3 mb-3 font-weight-normal">upload image</h1>
+  {% csrf_token %}
 
-    <label for="image" class="sr-only">image</label>
-    <input type="file" id="image" name="image" class="form-control" required title=" " onchange="dispimg(this)" /><br /><br />
-    <img id="blah" src="" alt="your image" width="200" height="auto" />
-    <label for="option" class="sr-only">description</label>
-    <!-- <select name="option" id="option">
+  <div class="uploader" id="dragndrop">
+    <img src="static/upload.png" alt="">
+    <input type="file" name="image" id="fileInput" onchange="dispimg(this)">
+    <p>drag and drop file here</p>
+    <p>- OR -</p>
+    <div class="btn" onclick="activeload()" id="submitmid">Browse Your files</div>
+  </div>
+
+
+
+  <!-- <h1 class="h3 mb-3 font-weight-normal">upload image</h1>
+
+  <label for="image" class="sr-only">image</label>
+  <input type="file" id="image" name="image" class="form-control" required title=" " /><br /><br /> -->
+  <img id="blah" src="" alt="your image" width="200" height="auto" />
+  <label for="option" class="sr-only">description</label>
+  <!-- <select name="option" id="option">
     <option value="NO_FILTER">NO_FILTER</option>
     <option value="COLORIZED">COLORIZED</option>
     <option value="GRAYSCALE">GRAYSCALE</option>
@@ -29,177 +42,174 @@
     <option value="SHAPE">shape ditection</option>
   </select> -->
 
-    <div class="selector">
-        <label for="NO_FILTER">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/nofilter.jpg')"
-      >
-        <input
-          type="radio"
-          name="option"
-          value="NO_FILTER"
-          id="NO_FILTER"
-          checked
-        />
+  <div class="selector">
+    <label for="NO_FILTER">
+      <div class="lab" style="background-image: url('static/thumbnail/nofilter.jpg')">
+        <input type="radio" name="option" value="NO_FILTER" id="NO_FILTER" checked />
         <p>NO_FILTER</p>
       </div>
     </label>
-        <label for="COLORIZED">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/color.jpg')"
-      >
+    <label for="COLORIZED">
+      <div class="lab" style="background-image: url('static/thumbnail/color.jpg')">
         <input type="radio" name="option" value="COLORIZED" id="COLORIZED" />
         <p>COLORIZED</p>
       </div>
     </label>
-        <label for="GRAYSCALE">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/gray.jpg')"
-      >
+    <label for="GRAYSCALE">
+      <div class="lab" style="background-image: url('static/thumbnail/gray.jpg')">
         <input type="radio" name="option" value="GRAYSCALE" id="GRAYSCALE" />
         <p>GRAYSCALE</p>
       </div>
     </label>
-        <label for="BLURRED">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/blur.jpg')"
-      >
+    <label for="BLURRED">
+      <div class="lab" style="background-image: url('static/thumbnail/blur.jpg')">
         <input type="radio" name="option" value="BLURRED" id="BLURRED" />
         <p>BLURRED</p>
       </div>
     </label>
-        <label for="BINARY">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/binary.jpg')"
-      >
+    <label for="BINARY">
+      <div class="lab" style="background-image: url('static/thumbnail/binary.jpg')">
         <input type="radio" name="option" value="BINARY" id="BINARY" />
         <p>BINARY</p>
       </div>
     </label>
-        <label for="INVERT">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/invert.jpg')"
-      >
+    <label for="INVERT">
+      <div class="lab" style="background-image: url('static/thumbnail/invert.jpg')">
         <input type="radio" name="option" value="INVERT" id="INVERT" />
         <p>INVERT</p>
       </div>
     </label>
-        <label for="FACE_DETECTION">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/face.jpg')"
-      >
-        <input
-          type="radio"
-          name="option"
-          value="FACE_DETECTION"
-          id="FACE_DETECTION"
-        />
+    <label for="FACE_DETECTION">
+      <div class="lab" style="background-image: url('static/thumbnail/face.jpg')">
+        <input type="radio" name="option" value="FACE_DETECTION" id="FACE_DETECTION" />
         <p>FACE_DETECTION</p>
       </div>
     </label>
-        <label for="CLASSIFICATION">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/classsific.jpg')"
-      >
-        <input
-          type="radio"
-          name="option"
-          value="CLASSIFICATION"
-          id="CLASSIFICATION"
-        />
+    <label for="CLASSIFICATION">
+      <div class="lab" style="background-image: url('static/thumbnail/classsific.jpg')">
+        <input type="radio" name="option" value="CLASSIFICATION" id="CLASSIFICATION" />
         <p>CLASSIFICATION</p>
       </div>
     </label>
-        <label for="SKETCHED">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/skached.jpg')"
-      >
+    <label for="SKETCHED">
+      <div class="lab" style="background-image: url('static/thumbnail/skached.jpg')">
         <input type="radio" name="option" value="SKETCHED" id="SKETCHED" />
         <p>SKETCHED</p>
       </div>
     </label>
-        <label for="SHAPE">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/shape.jpg')"
-      >
+    <label for="SHAPE">
+      <div class="lab" style="background-image: url('static/thumbnail/shape.jpg')">
         <input type="radio" name="option" value="SHAPE" id="SHAPE" />
         <p>SHAPE DITECTION</p>
       </div>
     </label>
-        </label>
-        <label for="DOCUMENT">
-      <div
-        class="lab"
-        style="background-image: url('static/thumbnail/shape.jpg')"
-      >
+    </label>
+    <label for="DOCUMENT">
+      <div class="lab" style="background-image: url('static/thumbnail/shape.jpg')">
         <input type="radio" name="option" value="DOCUMENT" id="DOCUMENT" />
         <p>DOCUMENT FLATTEN</p>
       </div>
     </label>
-    </div>
-    <br /><br />
+  </div>
+  <br /><br />
 
-    <!--<label for="Password" class="sr-only">Password</label>
+  <!--<label for="Password" class="sr-only">Password</label>
       <input type="password" id="Password" name="passward" class="form-control" placeholder="Password" required> -->
-    <div class="checkbox mb-3">
-        <label> </label>
-    </div>
-    <button class="btn btn-lg btn-success btn-block" type="submit" value="upload">
+  <div class="checkbox mb-3">
+    <label> </label>
+  </div>
+  <button class="btn btn-lg btn-success btn-block" type="submit" value="upload">
     upload
   </button>
 </form>
 
 {% if p %}
 <div class="result">
-    <div class="rimg">
-        <img src="{{p.orgimage.url}}" alt="orgpicture" width="300px" />
-        <p>original image</p>
-    </div>
-    <div class="rimg">
-        <img src="{{p.image.url}}" alt="finalpicture" width="300px" />
-        <p>processed image</p>
-    </div>
+  <div class="rimg">
+    <img src="{{p.orgimage.url}}" alt="orgpicture" width="300px" />
+    <p>original image</p>
+  </div>
+  <div class="rimg">
+    <img src="{{p.image.url}}" alt="finalpicture" width="300px" />
+    <p>processed image</p>
+  </div>
 </div>
 {% endif %}
 
 <div class="footer">
-    <div class="social">
-        <a href="#" class="fa fa-instagram"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-google"></a>
-        <a href="#" class="fa fa-youtube"></a>
-    </div>
-    <h3>
-        Vision is a Computer Vision project built by Tirtharaj Sinha<br /> with <i class="fa fa-heart" style="color: red"></i> and effort.
-    </h3>
-    <div class="foot"></div>
+  <div class="social">
+    <a href="#" class="fa fa-instagram"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    <a href="#" class="fa fa-google"></a>
+    <a href="#" class="fa fa-youtube"></a>
+  </div>
+  <h3>
+    Vision-X is a Computer Vision project built by Tirtharaj Sinha<br /> with <i class="fa fa-heart"
+      style="color: red"></i> and effort.
+  </h3>
+  <div class="foot"></div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 <script>
-    document.getElementsByClassName("service")[0].classList.add("active");
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
+  document.getElementsByClassName("service")[0].classList.add("active");
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+  }
+  const dropArea = document.querySelector("#dragndrop");
+  const input = dropArea.querySelector("#fileInput");
+  let openfile = "";
 
-    function dispimg(ele) {
-        document.getElementById("blah").style.display = "block";
-        document.getElementById("blah").src = window.URL.createObjectURL(
-            ele.files[0]
-        );
-    }
+
+  input.addEventListener("change", function () {
+    //getting user select file and [0] this means if user select multiple files then we'll select only the first one
+    let file = this.files;
+    files = input.files;
+
+    input.files = new FileListItems(Array.from(openfile).concat(Array.from(input.files)));
+    showFile(); //calling function
+    console.log("changed")
+    checkfile();
+    document.getElementById("submitmid").innerHTML = "<i class='fa fa-plus'> </i>Add more file"
+  });
+  dropArea.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    document.getElementById("dragndrop").style.background = "rgb(235, 235, 235)"; //preventing from default behaviour
+  });
+
+  dropArea.addEventListener("dragleave", () => {
+    document.getElementById("dragndrop").style.background = "white";
+  });
+  dropArea.addEventListener("drop", (event) => {
+    event.preventDefault(); //preventing from default behaviour
+    let oldlist = input.files;
+    //getting user select file and [0] this means if user select multiple files then we'll select only the first one
+    input.files = event.dataTransfer.files;
+    files = input.files;
+    dispimg(input)
+    document.getElementById("dragndrop").style.background = "white";
+
+  });
+
+  function dispimg(ele) {
+    document.getElementById("blah").style.display = "block";
+    document.getElementById("blah").src = window.URL.createObjectURL(
+      ele.files[0]
+    );
+  }
+
+  function activeload() {
+    openfile = input.files;
+    document.getElementById("fileInput").click();
+  }
 </script>
 
 {% endblock %}
