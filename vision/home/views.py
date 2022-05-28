@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.contrib.staticfiles.views import serve
 from .models import Upload
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -8,6 +9,10 @@ from datetime import datetime
 from django.contrib import messages
 # superuser username-admin /  passward-tirtha098
 # Create your views here.
+
+
+def favicon(request):
+    return serve(request, 'favicon.png')
 
 
 def index(request):
