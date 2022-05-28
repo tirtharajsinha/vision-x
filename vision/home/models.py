@@ -46,9 +46,7 @@ class Upload(models.Model):
         try:
             img = get_filtered_image(cv_img, self.action)
         except:
-            img = np.zeros((512, 512, 3), np.uint8)
-            cv2.putText(img, "No Action", (100, 200),
-                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 100), 10)
+            pass
 
         # convert back to pil image
         im_pil = Image.fromarray(img)
