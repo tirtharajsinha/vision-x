@@ -62,7 +62,7 @@ python manage.py runserver
 In linux
 
 ```
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 ## Contribution
