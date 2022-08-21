@@ -121,4 +121,6 @@ git merge upstream/main
 
    - [docs for database](https://dev.to/giftedstan/heroku-how-to-deploy-a-django-app-with-postgres-in-5-minutes-5lk#:~:text=This%20post%20is%20step%20by,project%20folder%20in%20the%20terminal.)
 
+<br><hr>
+
 <p style="float:right;">Developed by Tirtharaj Sinha<a href="https://github.com/tirtharajsinha"> @tirtharajsinha</a>.<br></p>
