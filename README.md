@@ -10,12 +10,12 @@
 
 ## Project Requirements
 
-1. Programing Language : python3
-2. core Backend frameworks/packages : Django, numpy, opencv, pillow , sqlite3 etc.
-3. Tools : IDE - Pycharm | Text Editor - VS Code
-4. version control system : git | remote-repository-platform : github.com
-5. Database : SQLite3
-6. Hosting platform : [pythonanywhere.com](https://pythonanywhere.com)
+- Programing Language : python3
+- core Backend frameworks/packages : Django, numpy, opencv, pillow , sqlite3 etc.
+- Tools : IDE - Pycharm | Text Editor - VS Code
+- version control system : git | remote-repository-platform : github.com
+- Database : SQLite3
+- Hosting platform : [pythonanywhere.com](https://pythonanywhere.com)
 
 ## Download codebase in local mechine
 
@@ -23,7 +23,8 @@
 git clone https://github.com/tirtharajsinha/vision-x.git
 ```
 
--- OR --
+-- OR --<br>
+If you have ssh connection then only
 
 ```
 git clone git@github.com:tirtharajsinha/vision-x.git
@@ -120,6 +121,6 @@ git merge upstream/main
 
    - [docs for database](https://dev.to/giftedstan/heroku-how-to-deploy-a-django-app-with-postgres-in-5-minutes-5lk#:~:text=This%20post%20is%20step%20by,project%20folder%20in%20the%20terminal.)
 
-<br><hr>
+<br>
 
-<p style="float:right;">Developed by Tirtharaj Sinha<a href="https://github.com/tirtharajsinha"> @tirtharajsinha</a>.<br></p>
+<p style="float:right;">- Developed by Tirtharaj Sinha<a href="https://github.com/tirtharajsinha"> @tirtharajsinha</a>.<br></p>
