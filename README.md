@@ -123,4 +123,4 @@ git merge upstream/main
 
 <br>
 
-<p style="float:right;">- Developed by Tirtharaj Sinha<a href="https://github.com/tirtharajsinha"> @tirtharajsinha</a>.<br></p>
+<p style="float:right;">Developed by Tirtharaj Sinha<a href="https://github.com/tirtharajsinha"> @tirtharajsinha</a>.<br></p>
